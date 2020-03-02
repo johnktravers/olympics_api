@@ -1,24 +1,68 @@
-# README
+# Olympics API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
 
-Things you may want to cover:
+The Olympics API provides analytical insight from the Rio 2016 Summer Olympics. This includes information about every olympian that competed, the youngest and oldest olympians, every sport and its events, and the medalists for each event.
 
-* Ruby version
 
-* System dependencies
+## Initial Setup
 
-* Configuration
+Navigate into your desired directory and execute the following commands to set up the repository locally:
 
-* Database creation
+```
+git clone git@github.com:johnktravers/olympics_api.git
+cd olympics_api
+bundle install
+rake db:{create,migrate}
+rake import:data
+rails server
+```
 
-* Database initialization
+Once the commands have finished executing, open a web browser and navigate to http://localhost:3000. You can now access the API locally.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Running Tests
 
-* Deployment instructions
+To make sure the repository is set up correctly, run the test suite with the following command:
 
-* ...
+```
+bundle exec rspec
+```
+
+
+## Endpoints
+
+- #### `GET /api/v1/olympians`
+
+- #### `GET /api/v1/olympians?age=youngest`
+
+- #### `GET /api/v1/olympians?age=oldest`
+
+- #### `GET /api/v1/olympian_stats`
+
+- #### `GET /api/v1/events`
+
+- #### `GET /api/v1/events/:id/medalists`
+
+
+## Database Schema
+
+<img width="993" alt="olympics_api_schema" src="https://user-images.githubusercontent.com/46035439/75685086-3cc9f500-5c57-11ea-8cad-c854cadfdf2b.png">
+
+
+## Tech Stack
+
+- Ruby on Rails
+- PostgreSQL
+- RSpec
+- Travis CI
+
+
+## How to Contribute
+
+If you would like to make a contribution, please fork the repo and set it up locally using the instructions above. Commit your changes, make a PR to this repo, and I'll get to it shortly. If you have any questions or advice for new features, feel free to reach out to me via my GitHub account below.
+
+
+## Core Contributors
+
+- [John Travers](https://github.com/johnktravers)
