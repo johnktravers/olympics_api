@@ -1,0 +1,13 @@
+before_script:
+- psql -c 'create database olympics_api_test;' -U postgres
+language: ruby
+rvm:
+- 2.4.1
+script:
+- bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
+- bundle exec rspec
+services: postgresql
+deploy:
+  provider: heroku
+  api_key:
+    secure: VRBJvFQBP6qz+adVbAIyL+W0v7QfOrxpXwr8ovCnRDIaV1qRPwEzD8XLB+qlTlLMQPfjWE4iVc4aKhhqbyAdC5ujfFv+TR3hw45HG1IRj0Yi/sBu8exRGrN+8yGIOTZzfMt2KcyNxoKZ2eFCHSxcCtUKzffY0HsXUl4AJI/dMI+ivT22jS2xH/in6PKTnveQMLTX2c0aVKMooTV/0Xk3nYKGQJ6oOZnNiqKdQqb+SE1gAEe23dbtgD92v7cU8DBe09XvMMlU/BbsOYeCq1at+BLx16tUB6JxqPLarhTIh1uOPIQvv4aX6MvD/e004UZfMm9ieCxGTbbtGBKgMTG/3CQZjLOI7MgVb7wVuuTkZGnU+uWfkIUBeTUYd3u/MhxU6AQV+z8JoY/3Zur4crkV7a2QBrNs6PFbEP7Pk8B6q+COueBx8QNwd4gtHjSKHYhUrgmSb9e7bCsGru92oiR2c8TphIDasxTcgvgVuRlzlKn76v5/09pGwVXZmrcXDGb1RFSX3P+V8aVMRpD8hx5gwTnXe33gD8jd7jCSzvPXdUG6vksq4uMmWdqeH1sIfi8QOFy6Kxi1r82yaOOAUdnrCJVRlr5uqRNUsU6EsTSg4yMoH6vqah4eA+GztOvUr9f5ASo39tMS09CsKF/V4yvI0QQ7KLm7SncOHx7KGM/HTlg=
