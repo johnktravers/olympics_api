@@ -33,6 +33,8 @@ RSpec.describe Olympian, type: :model do
 
   describe 'instance methods' do
     it 'total_medals_won' do
+      Faker::UniqueGenerator.clear
+
       olympian = create(:olympian)
 
       expect(olympian.total_medals_won).to eq(0)
@@ -43,6 +45,18 @@ RSpec.describe Olympian, type: :model do
       create(:olympian_event, medal: 3, olympian: olympian)
 
       expect(olympian.total_medals_won).to eq(4)
+    end
+  end
+
+  describe 'class methods' do
+    it 'youngest_olympians' do
+      Faker::UniqueGenerator.clear
+
+      olympian_1 = create(:olympian, age: 12)
+      create_list(:olympian, 4)
+      olympian_2 = create(:olympian, age: 12)
+
+      expect(Olympian.youngest_olympians).to eq([olympian_1, olympian_2])
     end
   end
 end
