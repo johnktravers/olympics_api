@@ -49,14 +49,24 @@ RSpec.describe Olympian, type: :model do
   end
 
   describe 'class methods' do
-    it 'youngest_olympians' do
+    before :each do
       Faker::UniqueGenerator.clear
+    end
 
+    it 'youngest_olympians' do
       olympian_1 = create(:olympian, age: 12)
       create_list(:olympian, 4)
       olympian_2 = create(:olympian, age: 12)
 
       expect(Olympian.youngest_olympians).to eq([olympian_1, olympian_2])
+    end
+
+    it 'oldest_olympians' do
+      olympian_1 = create(:olympian, age: 63)
+      create_list(:olympian, 4)
+      olympian_2 = create(:olympian, age: 63)
+
+      expect(Olympian.oldest_olympians).to eq([olympian_1, olympian_2])
     end
   end
 end
