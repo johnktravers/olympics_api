@@ -71,7 +71,7 @@ Response format:
       "name": "Ana Iulia Dascl",
       "team": "Romania",
       "age": 13,
-      "sport": "Swimming"
+      "sport": "Swimming",
       "total_medals_won": 0
     }
   ]
@@ -90,7 +90,7 @@ Response format:
       "name": "Julie Brougham",
       "team": "New Zealand",
       "age": 62,
-      "sport": "Equestrianism"
+      "sport": "Equestrianism",
       "total_medals_won": 0
     }
   ]
@@ -98,6 +98,23 @@ Response format:
 ```
 
 - #### `GET /api/v1/olympian_stats`
+
+This endpoint gives a set of statistics for all olympians that competed, including the total number of competitors, average weight (split by biological sex), and average age.
+
+Response format:
+```
+{
+  "olympian_stats": {
+    "total_competing_olympians": 3120
+    "average_weight:" {
+      "unit": "kg",
+      "male_olympians": 75.4,
+      "female_olympians": 70.2
+    },
+    "average_age:" 26.2
+  }
+}
+```
 
 - #### `GET /api/v1/events`
 
