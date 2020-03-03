@@ -34,9 +34,68 @@ bundle exec rspec
 
 - #### `GET /api/v1/olympians`
 
+This endpoint retrieves all of the olympians that competed in the 2016 games. No request body is necessary.
+
+Response format:
+```
+{
+  "olympians": [
+    {
+      "name": "Maha Abdalsalam",
+      "team": "Egypt",
+      "age": 18,
+      "sport": "Diving"
+      "total_medals_won": 0
+    },
+    {
+      "name": "Ahmad Abughaush",
+      "team": "Jordan",
+      "age": 20,
+      "sport": "Taekwondo"
+      "total_medals_won": 1
+    },
+    {...}
+  ]
+}
+```
+
 - #### `GET /api/v1/olympians?age=youngest`
 
+This endpoint gives back the youngest olympians that competed in the 2016 games. All olympians returned share the same age.
+
+Response format:
+```
+{
+  "olympians": [
+    {
+      "name": "Ana Iulia Dascl",
+      "team": "Romania",
+      "age": 13,
+      "sport": "Swimming"
+      "total_medals_won": 0
+    }
+  ]
+}
+```
+
 - #### `GET /api/v1/olympians?age=oldest`
+
+This endpoint gives back the oldest olympians that competed in the 2016 games. All olympians returned share the same age.
+
+Response format:
+```
+{
+  "olympians": [
+    {
+      "name": "Julie Brougham",
+      "team": "New Zealand",
+      "age": 62,
+      "sport": "Equestrianism"
+      "total_medals_won": 0
+    }
+  ]
+}
+```
 
 - #### `GET /api/v1/olympian_stats`
 
