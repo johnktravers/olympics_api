@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :event do
-    name { Faker::Job.title }
+    name { Faker::Job.unique.title }
     sport
   end
 end
