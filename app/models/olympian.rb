@@ -28,4 +28,16 @@ class Olympian < ApplicationRecord
     oldest_age = order(age: :desc).first.age
     where(age: oldest_age).order(:id)
   end
+
+  def self.total_competing_olympians
+    count
+  end
+
+  def self.average_weight_by_sex(sex)
+    where(sex: sex).average(:weight)
+  end
+
+  def self.average_age
+    average(:age)
+  end
 end

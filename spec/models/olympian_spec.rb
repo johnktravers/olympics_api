@@ -68,5 +68,33 @@ RSpec.describe Olympian, type: :model do
 
       expect(Olympian.oldest_olympians).to eq([olympian_1, olympian_2])
     end
+
+    it 'total_competing_olympians' do
+      create_list(:olympian, 8)
+
+      expect(Olympian.total_competing_olympians).to eq(8)
+    end
+
+    it 'average_weight_by_sex' do
+      create(:olympian, sex: 'M', weight: 75)
+      create(:olympian, sex: 'M', weight: 92)
+      create(:olympian, sex: 'M', weight: 54)
+      create(:olympian, sex: 'F', weight: 45)
+      create(:olympian, sex: 'F', weight: 95)
+      create(:olympian, sex: 'F', weight: 111)
+
+      expect(Olympian.average_weight_by_sex('M').round(2)).to eq(73.67)
+      expect(Olympian.average_weight_by_sex('F').round(2)).to eq(83.67)
+    end
+
+    it 'average_age' do
+      create(:olympian, age: 24)
+      create(:olympian, age: 35)
+      create(:olympian, age: 29)
+      create(:olympian, age: 17)
+      create(:olympian, age: 24)
+
+      expect(Olympian.average_age).to eq(25.8)
+    end
   end
 end
