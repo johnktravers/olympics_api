@@ -3,6 +3,8 @@ class Api::V1::OlympiansController < ApplicationController
     if params[:age]
       if params[:age] == 'youngest'
         olympians = Olympian.youngest_olympians.includes(:team, :sport, :olympian_events)
+      elsif params[:age] == 'oldest'
+        olympians = Olympian.oldest_olympians.includes(:team, :sport, :olympian_events)
       else
         error = "Invalid request. Please enter either 'youngest' or 'oldest' for the age parameter."
         return render json: Error.new(error).json, status: 400

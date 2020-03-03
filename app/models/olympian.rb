@@ -23,4 +23,9 @@ class Olympian < ApplicationRecord
     youngest_age = order(:age).first.age
     where(age: youngest_age).order(:id)
   end
+
+  def self.oldest_olympians
+    oldest_age = order(age: :desc).first.age
+    where(age: oldest_age).order(:id)
+  end
 end

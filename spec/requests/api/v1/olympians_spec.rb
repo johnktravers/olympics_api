@@ -57,6 +57,32 @@ RSpec.describe 'Olympians endpoint', type: :request do
     expect(olympians[1]['total_medals_won']).to eq(0)
   end
 
+  it 'can see a list of the oldest olympians' do
+    olympian_1 = create(:olympian, age: 63)
+    create_list(:olympian, 3)
+    olympian_2 = create(:olympian, age: 63)
+
+    get '/api/v1/olympians?age=oldest'
+
+    expect(response).to be_successful
+
+    olympians = JSON.parse(response.body)['olympians']
+
+    expect(olympians.length).to eq(2)
+
+    expect(olympians[0]['name']).to eq(olympian_1.name)
+    expect(olympians[0]['team']).to eq(olympian_1.team.country)
+    expect(olympians[0]['age']).to eq(olympian_1.age)
+    expect(olympians[0]['sport']).to eq(olympian_1.sport.name)
+    expect(olympians[0]['total_medals_won']).to eq(0)
+
+    expect(olympians[1]['name']).to eq(olympian_2.name)
+    expect(olympians[1]['team']).to eq(olympian_2.team.country)
+    expect(olympians[1]['age']).to eq(olympian_2.age)
+    expect(olympians[1]['sport']).to eq(olympian_2.sport.name)
+    expect(olympians[1]['total_medals_won']).to eq(0)
+  end
+
   it 'sees an error message if the age parameter is invalid' do
     get '/api/v1/olympians?age=middle'
 
