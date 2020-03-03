@@ -30,4 +30,19 @@ RSpec.describe Olympian, type: :model do
     it { should have_many :olympian_events }
     it { should have_many(:events).through(:olympian_events) }
   end
+
+  describe 'instance methods' do
+    it 'total_medals_won' do
+      olympian = create(:olympian)
+
+      expect(olympian.total_medals_won).to eq(0)
+
+      create_list(:olympian_event, 5, medal: 0, olympian: olympian)
+      create_list(:olympian_event, 2, medal: 1, olympian: olympian)
+      create(:olympian_event, medal: 2, olympian: olympian)
+      create(:olympian_event, medal: 3, olympian: olympian)
+
+      expect(olympian.total_medals_won).to eq(4)
+    end
+  end
 end
