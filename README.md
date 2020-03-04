@@ -150,6 +150,29 @@ Response format:
 
 - #### `GET /api/v1/events/:id/medalists`
 
+This endpoint returns the medalists for the event matching the given ID. Medalists are sorted by medal type and alphabetically by last name. Because this is sample data, not all events will have a complete list of medalists.
+
+Response format:
+```
+{
+  "event": "Swimming Men's 200 metres Breaststroke",
+  "medalists": [
+    {
+      "name": "Dmitry Igorevich Balandin",
+      "team": "Kazakhstan",
+      "age": 21,
+      "medal": "Gold"
+    },
+    {
+      "name": "Anton Mikhaylovich Chupkov",
+      "team": "Russia",
+      "age": 19,
+      "medal": "Bronze"
+    }
+  ]
+}
+```
+
 
 ## Database Schema
 
