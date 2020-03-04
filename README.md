@@ -34,7 +34,7 @@ bundle exec rspec
 
 - #### `GET /api/v1/olympians`
 
-This endpoint retrieves all of the olympians that competed in the 2016 games. No request body is necessary.
+This endpoint retrieves all of the olympians that competed in the 2016 games. Olympians are listed in alphabetical order by last name.
 
 Response format:
 ```
@@ -117,6 +117,36 @@ Response format:
 ```
 
 - #### `GET /api/v1/events`
+
+This endpoint lists all of the events that were open for competition during the 2016 games, organized by sport and listed in alphabetical order.
+
+Response format:
+```
+{
+  "events": [
+    {
+      "sport": "Archery",
+      "events": [
+        "Archery Men's Individual",
+        "Archery Men's Team",
+        "Archery Women's Individual",
+        "Archery Women's Team"
+      ]
+    },
+    {
+      "sport": "Badminton",
+      "events": [
+        "Badminton Men's Doubles",
+        "Badminton Men's Singles",
+        "Badminton Mixed Doubles",
+        "Badminton Women's Doubles",
+        "Badminton Women's Singles"
+      ]
+    },
+    {...}
+  ]
+}
+```
 
 - #### `GET /api/v1/events/:id/medalists`
 
