@@ -1,8 +1,13 @@
 # Olympics API
 
+[![Build Status](https://travis-ci.com/johnktravers/olympics_api.svg?branch=master)](https://travis-ci.com/johnktravers/olympics_api)
+
 ## Introduction
 
 The Olympics API provides analytical insight from the Rio 2016 Summer Olympics. This includes information about every olympian that competed, the youngest and oldest olympians, every sport and its events, and the medalists for each event.
+
+This API is deployed to Heroku [here](https://olympics-api-jtravers.herokuapp.com/api/v1/events).
+
 
 
 ## Initial Setup
@@ -32,7 +37,7 @@ bundle exec rspec
 
 ## Endpoints
 
-- #### `GET /api/v1/olympians`
+#### All Olympians: `GET /api/v1/olympians`
 
 This endpoint retrieves all of the olympians that competed in the 2016 games. Olympians are listed in alphabetical order by last name.
 
@@ -59,7 +64,7 @@ Response format:
 }
 ```
 
-- #### `GET /api/v1/olympians?age=youngest`
+#### Youngest Olympians: `GET /api/v1/olympians?age=youngest`
 
 This endpoint gives back the youngest olympians that competed in the 2016 games. All olympians returned share the same age.
 
@@ -78,7 +83,7 @@ Response format:
 }
 ```
 
-- #### `GET /api/v1/olympians?age=oldest`
+#### Oldest Olympians: `GET /api/v1/olympians?age=oldest`
 
 This endpoint gives back the oldest olympians that competed in the 2016 games. All olympians returned share the same age.
 
@@ -97,7 +102,7 @@ Response format:
 }
 ```
 
-- #### `GET /api/v1/olympian_stats`
+#### Olympian Statistics: `GET /api/v1/olympian_stats`
 
 This endpoint gives a set of statistics for all olympians that competed, including the total number of competitors, average weight (split by biological sex), and average age.
 
@@ -116,7 +121,7 @@ Response format:
 }
 ```
 
-- #### `GET /api/v1/events`
+#### All Olympic Events: `GET /api/v1/events`
 
 This endpoint lists all of the events that were open for competition during the 2016 games, organized by sport and listed in alphabetical order.
 
@@ -148,7 +153,7 @@ Response format:
 }
 ```
 
-- #### `GET /api/v1/events/:id/medalists`
+#### Event Medalists: `GET /api/v1/events/:id/medalists`
 
 This endpoint returns the medalists for the event matching the given ID. Medalists are sorted by medal type and alphabetically by last name. Because this is sample data, not all events will have a complete list of medalists.
 
@@ -176,7 +181,7 @@ Response format:
 
 ## Database Schema
 
-<img width="993" alt="olympics_api_schema" src="https://user-images.githubusercontent.com/46035439/75685086-3cc9f500-5c57-11ea-8cad-c854cadfdf2b.png">
+<img width="1095" alt="olympics_api_schema" src="https://user-images.githubusercontent.com/46035439/75837826-39338c80-5d83-11ea-9800-20d39e018c54.png">
 
 
 ## Tech Stack
